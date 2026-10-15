@@ -128,8 +128,8 @@ def parse(path):
     note = {"path": rel, "title": title, "summary": summary, "cat": cat,
             "created": created, "updated": updated or created, "url": REPO_URL + rel}
     rows = []
-    # "관련" 섹션은 다른 노트로 가는 링크 모음이라 보드 행에서는 뺀다
-    sections = [(n, b) for n, b in sections if not n.startswith("관련")]
+    # "관련"·"출처" 섹션은 링크 모음이라 보드 행에서는 뺀다
+    sections = [(n, b) for n, b in sections if not n.startswith(("관련", "출처"))]
     for idx, (sec, sl) in enumerate(sections):
         text = plain(sl)
         rows.append({"note": rel, "order": idx, "section": sec, "html": render(sl, path.parent),
