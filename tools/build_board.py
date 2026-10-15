@@ -138,9 +138,9 @@ def parse(path):
 
 
 def main():
-    cats = [d.name.split("_", 1)[1] for d in sorted(ROOT.glob("0*/")) if d.is_dir()]
+    cats = [d.name.split("_", 1)[1] for d in sorted(ROOT.glob("[0-9][0-9]_*/")) if d.is_dir()]
     notes, rows = [], []
-    for p in sorted(ROOT.glob("0*/*.md")):
+    for p in sorted(ROOT.glob("[0-9][0-9]_*/*.md")):
         if p.name == "README.md":
             continue
         n, r = parse(p)

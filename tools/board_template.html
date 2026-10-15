@@ -17,7 +17,7 @@
   --warn-soft: #fff1dc;
   --row-hover: #f0f3fa;
   --c1: #c2410c; --c2: #b45309; --c3: #4d7c0f; --c4: #0f766e; --c5: #1d4ed8;
-  --c6: #15803d; --c7: #b91c1c; --c8: #7e22ce; --c9: #be185d;
+  --c6: #15803d; --c7: #b91c1c; --c8: #7e22ce; --c9: #be185d; --c10: #6d5a2e;
   --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
@@ -26,7 +26,7 @@
     --bg: #12151c; --surface: #1a1e27; --fg: #e5e8ef; --muted: #98a0b0; --line: #2c3240;
     --accent: #8ea5ff; --accent-soft: #232b48; --warn: #f2b25c; --warn-soft: #3a2a12; --row-hover: #20263a;
     --c1: #fb923c; --c2: #fbbf24; --c3: #a3e635; --c4: #2dd4bf; --c5: #7aa2ff;
-    --c6: #4ade80; --c7: #f87171; --c8: #c084fc; --c9: #f472b6;
+    --c6: #4ade80; --c7: #f87171; --c8: #c084fc; --c9: #f472b6; --c10: #d6b46a;
     color-scheme: dark;
   }
 }
@@ -34,7 +34,7 @@
   --bg: #12151c; --surface: #1a1e27; --fg: #e5e8ef; --muted: #98a0b0; --line: #2c3240;
   --accent: #8ea5ff; --accent-soft: #232b48; --warn: #f2b25c; --warn-soft: #3a2a12; --row-hover: #20263a;
   --c1: #fb923c; --c2: #fbbf24; --c3: #a3e635; --c4: #2dd4bf; --c5: #7aa2ff;
-  --c6: #4ade80; --c7: #f87171; --c8: #c084fc; --c9: #f472b6;
+  --c6: #4ade80; --c7: #f87171; --c8: #c084fc; --c9: #f472b6; --c10: #d6b46a;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -167,7 +167,7 @@ a { color: var(--accent); }
 const DATA = /*__DATA__*/null;
 const notes = Object.fromEntries(DATA.notes.map(n => [n.path, n]));
 const catIndex = Object.fromEntries(DATA.cats.map((c, i) => [c, i]));
-const catColor = c => `var(--c${(catIndex[c] ?? 0) % 9 + 1})`;
+const catColor = c => `var(--c${(catIndex[c] ?? 0) % 10 + 1})`;
 const rows = DATA.rows.map((r, i) => ({ ...r, id: i, n: notes[r.note],
   hay: (notes[r.note].title + " " + notes[r.note].summary + " " + r.section + " " + r.text + " " + notes[r.note].cat).toLowerCase() }));
 
