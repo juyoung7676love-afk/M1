@@ -105,7 +105,7 @@ def parse(path):
             created = line.split(":", 1)[1].strip()
         elif line.startswith("업데이트:"):
             updated = line.split(":", 1)[1].strip()
-        elif line.strip() == "---":
+        elif line.strip() in ("---", "<!-- 상단고정 -->"):
             continue
         else:
             body.append(line)
@@ -126,7 +126,11 @@ def parse(path):
 
     cat = path.parent.name.split("_", 1)[1]
     note = {"path": rel, "title": title, "summary": summary, "cat": cat,
-            "created": created, "updated": updated or created, "url": REPO_URL + rel}
+            "created": created[:10], "updated": (updated or created)[:10], "url": REPO_URL + rel,
+            # <!-- 상단고정 --> 이 있는 노트는 보드 맨 위에 별표로 고정
+            "pin": "<!-- 상단고정 -->" in "\n".join(lines),
+            # 09_실무에 있는 가공집 노트는 10_가공집과 같은 내용 → '전체' 보기에서 한 번만 보이게
+            "mirror": path.parent.name == "09_실무" and (ROOT / "10_가공집" / path.name).exists()}
     rows = []
     # "관련"·"출처" 섹션은 링크 모음이라 보드 행에서는 뺀다
     sections = [(n, b) for n, b in sections if not n.startswith(("관련", "출처"))]
