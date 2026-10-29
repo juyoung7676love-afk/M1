@@ -1,0 +1,98 @@
+<title>최신 소재 레퍼런스 5선</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 브랜드별 한 블록 — 실제 소재 이미지 줄 + 짧은 볼 점. PDF 전 1차 수집용 */
+:root{
+  --bg:#ecebe6; --paper:#f8f7f3; --ink:#1b1b19; --muted:#6a6862; --line:#d3d1c8; --accent:#c4361c; --chip:#e2e0d8;
+  --display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161614;--paper:#201f1c;--ink:#ecebe5;--muted:#a3a097;--line:#3a3933;--accent:#ec6a4c;--chip:#2c2b27;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161614;--paper:#201f1c;--ink:#ecebe5;--muted:#a3a097;--line:#3a3933;--accent:#ec6a4c;--chip:#2c2b27;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+h1{font-family:var(--display);font-size:clamp(28px,4.4vw,44px);line-height:1.2;margin:0 0 10px;text-wrap:balance}
+header p{margin:0;max-width:64ch;color:var(--muted)}
+.key{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.key span{font-family:var(--mono);font-size:12px;background:var(--chip);padding:3px 8px;border-radius:3px}
+section{display:grid;gap:14px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;border-top:2px solid var(--ink);padding-top:12px}
+.head .no{font-family:var(--mono);color:var(--accent);font-size:14px}
+.head h2{font-family:var(--display);font-size:clamp(22px,3vw,30px);margin:0;line-height:1.25}
+.head .meta{color:var(--muted);font-size:13px}
+.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
+.shots figure{margin:0;flex:0 0 auto;scroll-snap-align:start}
+.shots img{height:min(360px,62vw);width:auto;max-width:none;display:block;border:1px solid var(--line);background:#fff}
+.shots figcaption{font-size:12px;color:var(--muted);margin-top:4px;max-width:36ch}
+.body{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;background:var(--paper);border:1px solid var(--line);padding:18px}
+@media (max-width:760px){.body{grid-template-columns:1fr}}
+.body h3{font-size:13px;margin:0 0 6px;letter-spacing:.04em}
+.body ul{margin:0;padding-left:18px;display:grid;gap:5px}
+.body b{font-family:var(--mono);font-weight:500;color:var(--accent);font-size:12px;margin-right:4px}
+.body a{color:var(--ink);text-underline-offset:3px}
+.side{display:grid;gap:12px;align-content:start;font-size:13px}
+.ind{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:3px;margin-right:6px}
+footer{color:var(--muted);font-size:13px;max-width:70ch}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>최신 광고 소재 5선 · 2025–2026</h1>
+  <p>PDF로 만들기 전에 모아 본 1차 후보입니다. 모두 2025년 이후 공개된 캠페인이고, 앞에서 본 브랜드(NIKE·BYREDO·GENTLE MONSTER·JACQUEMUS·LOEWE·HERMÈS·CHANEL·rhode·Aēsop)는 뺐습니다. 이미지는 옆으로 넘겨 보세요.</p>
+  <div class="key"><span>①위계</span><span>②덩어리</span><span>③여백</span><span>④시선 흐름</span><span>⑤겹침</span><span>⑥무게 균형</span><span>⑦반복과 변화</span><span>⑧가장자리</span></div>
+</header>
+<main id="list" style="display:grid;gap:48px"></main>
+<footer>이미지는 공부용으로 출처 페이지(브랜드 보도자료·매거진·아카이브)에서 가져왔습니다. 고르고 나면 이 형식 그대로 2장 구성 PDF로 만들 수 있어요.</footer>
+</div>
+
+<script>
+const items=[
+{no:'01',name:'PRADA — Image of an Image',meta:'2026 S/S · 2026.01 공개 · 사진 Anne Collier',ind:'패션',
+ shots:[['prada_1','노란 장갑 낀 손이 사진을 들고 있는 컷'],['prada_2','주황 배경 + 보라 사진 + 하늘색 장갑'],['prada_3','맨손이 든 사진, 인물과 가방'],['prada_4','PRADA 로고가 들어간 가로 레이아웃']],
+ look:[['⑤','화면 안에 사진 한 장이 또 들어 있는 액자 속 액자 구조야. 바깥 손과 배경이 앞, 사진 속 인물이 뒤라서 앞뒤 층이 분명하게 읽혀.'],
+       ['①','주황색 단색 바탕 위에 사각형 사진 하나만 놓았어. 무엇을 봐야 할지 바로 정해지고, 장갑 색이 작은 포인트가 돼.'],
+       ['⑧','손은 화면 아래 가장자리에서 확실히 잘려 들어와. 잘라낼 거면 확실히 자르라는 원리에 딱 맞는 예시야.']],
+ src:[['Prada 보도자료','https://www.pradagroup.com/en/news-media/press-releases-documents/2026/26-01-07-prada-ss2026-campaign.html'],['V Magazine','https://vmagazine.com/article/pradas-spring-summer-2026-campaign-has-arrived/']]},
+{no:'02',name:'THE ROW — 2026 S/S 비주얼',meta:'2025–2026 · 회색 지면 위 사진 콜라주 · 타이포 없음',ind:'패션',
+ shots:[['row_1','같은 크기 전신 3컷 나란히'],['row_2','큰 얼굴 + 작은 컷 3개 세로 + 전신'],['row_3','전신 2컷 세로 쌓기 + 상반신 2컷']],
+ look:[['②⑦','사진 크기를 크게, 중간, 작게 섞어서 한 화면에 놓았어. 같은 형식의 사진을 반복하면서 크기와 개수만 바꿔 리듬을 만들어.'],
+       ['③','종이 같은 회색 바탕에 사진 사이 간격을 일정하게 두었어. 여백이 정돈돼 있어서 사진이 여러 장이어도 차분하게 보여.'],
+       ['①','로고도 문구도 없이 배치만으로 브랜드 톤을 전해. 꾸미지 않은 화면 자체가 브랜드 성격이야.']],
+ src:[['Visie: The Row Spring 2026','https://visie.io/media/the-row-spring-2026-2025-327930'],['Art Direction 뉴스레터 (SS26 정리)','https://artdirection.substack.com/p/where-i-think-luxury-brand-images']],
+ note:'⚠️ 확인 필요: 콜라주 컷이 룩북(사진 Mark Kean)인지 Summer 26 캠페인(사진 Chris Rhodes)인지 출처마다 다르게 정리돼 있음.'},
+{no:'03',name:'NONFICTION — For Rest · Open Arms',meta:'2025 · 오 드 퍼퓸 비주얼 · 한국 브랜드',ind:'뷰티 (향수)',
+ shots:[['nf_1','인형·당구공·빨래집게·향수병을 나란히'],['nf_2','필름 밀착 인화(Kodak Portra 400)처럼 같은 병을 반복'],['nf_3','제품 없이 오렌지 껍질만'],['nf_4','하늘색 바탕 위 병 하나']],
+ look:[['②⑥','엉뚱한 오브제 세 개와 병을 한 줄로 놓았어. 높이와 형태가 다 달라서 큰, 중간, 작은 덩어리가 생기고, 맨 오른쪽 병이 가장 단순한 형태라 오히려 눈에 띄어.'],
+       ['⑦','필름 밀착 인화 컷은 같은 병을 칸마다 반복하면서, 주변에 흩어진 씨앗의 위치와 개수만 조금씩 바꿔. 필름 테두리의 검은 띠가 격자를 만들어 통일감을 주고, 씨앗이 변화를 줘.'],
+       ['③','하늘색 단색 바탕과 넓은 여백을 시리즈 전체에 고정했어. 제품이 없는 오렌지 껍질 컷도 같은 브랜드로 읽혀.']],
+ src:[['Visie: NONFICTION 2025','https://visie.io/project/various-campaigns-nonfiction-beauty-eau-de-parfum-for-rest-with-open-arms-2025']]},
+{no:'04',name:'SAINT LAURENT — Shades of Summer',meta:'2025.07 · 사진 Henrik Purienne · 크리에이티브 디렉터 Anthony Vaccarello',ind:'패션 (액세서리·라이프스타일)',
+ shots:[['sl_1','위에서 내려다본 로고 수건 위 선글라스'],['sl_2','분홍 서프보드 위 SAINT LAURENT 로고'],['sl_3','가방 디테일 클로즈업']],
+ look:[['④','수건 컷은 위에서 수직으로 내려다봐서 평면 그래픽처럼 보여. 수건의 대각선과 선글라스 다리가 시선을 로고로 모아.'],
+       ['②','서프보드는 길고 납작한 하나의 큰 덩어리이고, 로고를 그 위에 얹어서 사물 자체가 타이포의 바탕이 됐어.'],
+       ['⑥','필름 같은 거친 질감과 바랜 색으로 전체 톤을 하나로 묶었어. 요즘 럭셔리 광고에서 많이 쓰는 아날로그 질감이야.']],
+ src:[['The Impression','https://theimpression.com/saint-laurent-shades-of-summer-2025-ad-campaign-review/']]},
+{no:'05',name:'BOTTEGA VENETA — 쌓기와 손',meta:'2025 · ① SCMP Style 화보 “Weaving A Tale” ② 캠페인 “Craft is Our Language” (사진 Jack Davison)',ind:'패션 (가방)',
+ shots:[['bv_1','푸딩 컵 두 줄을 다리처럼 쌓고 그 위에 올린 인트레치아토 가방'],['bv_2','인물 옆으로 손들이 솟아오르는 흑백 컷']],
+ look:[['④⑥','크고 짙은 가방이 가는 컵 기둥 두 개 위에 올라가 있어서, 위는 크고 무겁고 아래는 가늘어. 가방이 다리로 서 있는 사람처럼 보이고, 어떻게 서 있지 하는 긴장감이 시선을 붙잡아.'],
+       ['⑦','컵은 같은 형태를 반복하는데 아래는 진한 갈색, 위로 갈수록 밝은 크림색으로 바뀌어. 반복 속에 색의 단계 변화가 있어 받침대 자체에 리듬이 생겨.'],
+       ['②','흑백 컷은 왼쪽 인물 덩어리와 오른쪽 손 무리 덩어리가 마주 보는 구성이야. 손이 위로 뻗어서 시선이 위로 올라가.']],
+ src:[['Visie: Weaving A Tale','https://visie.io/media/bottega-special-weaving-a-tale-2025-365078'],['Art Direction 뉴스레터','https://artdirection.substack.com/p/where-i-think-luxury-brand-images']],
+ note:'①은 브랜드 공식 광고가 아니라 매거진 화보야. 광고만 원하면 다른 컷으로 바꿀게.'}
+];
+document.getElementById('list').innerHTML=items.map(b=>`
+<section>
+  <div class="head"><span class="no">${b.no}</span><h2>${b.name}</h2><span class="meta">${b.meta}</span></div>
+  <div class="shots">${b.shots.map(([f,c])=>`<figure><img src="img_trend/${f}.jpg" alt="${c}"><figcaption>${c}</figcaption></figure>`).join('')}</div>
+  <div class="body">
+    <div><h3>볼 점</h3><ul>${b.look.map(([k,t])=>`<li><b>${k}</b>${t}</li>`).join('')}</ul></div>
+    <div class="side"><div><span class="ind">업종</span>${b.ind}</div>
+      <div><h3>출처</h3><ul>${b.src.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>
+      ${b.note?`<div style="color:var(--muted)">${b.note}</div>`:''}</div>
+  </div>
+</section>`).join('');
+</script>
