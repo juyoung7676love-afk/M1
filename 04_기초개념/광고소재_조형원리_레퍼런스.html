@@ -1,0 +1,253 @@
+<title>조형원리 소재 레퍼런스</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 브랜드마다 펼침면 2장 — 1장 원본 구조 / 2장 같은 논리의 응용 시안 4개. 작업용 크리틱 보드 느낌 */
+:root{
+  --bg:#ecebe6; --paper:#f8f7f3; --ink:#1b1b19; --muted:#6a6862; --line:#d3d1c8;
+  --accent:#c4361c; --chip:#e2e0d8;
+  --display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#161614; --paper:#201f1c; --ink:#ecebe5; --muted:#a3a097; --line:#3a3933; --accent:#ec6a4c; --chip:#2c2b27; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161614; --paper:#201f1c; --ink:#ecebe5; --muted:#a3a097; --line:#3a3933; --accent:#ec6a4c; --chip:#2c2b27; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:56px}
+header h1{font-family:var(--display);font-size:clamp(28px,4.4vw,46px);line-height:1.2;margin:0 0 12px;text-wrap:balance}
+header p{margin:0;max-width:62ch;color:var(--muted)}
+.key{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.key span,.tag{font-family:var(--mono);font-size:12px;background:var(--chip);padding:3px 8px;border-radius:3px;white-space:nowrap}
+.brand{display:grid;gap:14px}
+.brand-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;border-top:2px solid var(--ink);padding-top:12px}
+.brand-head .no{font-family:var(--mono);color:var(--accent);font-size:14px}
+.brand-head h2{font-family:var(--display);font-size:clamp(22px,3vw,30px);margin:0;line-height:1.25}
+.brand-head .meta{color:var(--muted);font-size:13px}
+.spread{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:860px){.spread{grid-template-columns:1fr}}
+.page{background:var(--paper);border:1px solid var(--line);padding:22px;display:grid;gap:16px;align-content:start;min-width:0}
+.page-label{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.orig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:520px){.orig{grid-template-columns:1fr}}
+svg.art{width:100%;height:auto;display:block;aspect-ratio:4/5;max-width:100%}
+.orig figcaption,.ex figcaption{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+figure{margin:0}
+.page h3{font-size:13px;margin:0 0 6px;letter-spacing:.04em}
+.page ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.page p{margin:0}
+.look li b{font-family:var(--mono);font-weight:500;color:var(--accent);font-size:12px;margin-right:4px}
+.src a{color:var(--ink);text-underline-offset:3px}
+.src{font-size:13px}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ex figcaption b{color:var(--ink);font-weight:700;display:block;font-size:13px}
+.why{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:10px}
+.ind{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ind .tag{background:var(--ink);color:var(--paper)}
+footer{color:var(--muted);font-size:13px;max-width:70ch}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="bottle" d="M185 120 h30 v40 q0 10 20 22 q25 14 25 40 v170 q0 12 -12 12 h-96 q-12 0 -12 -12 v-170 q0 -26 25 -40 q20 -12 20 -22 z"/>
+  </defs>
+</svg>
+
+<div class="wrap">
+<header>
+  <h1>조형원리로 읽는 광고 소재 5선</h1>
+  <p>앞서 본 NIKE·BYREDO·GENTLE MONSTER·JACQUEMUS·LOEWE·HERMÈS·CHANEL·rhode·Aēsop과 겹치지 않게, 업종을 넓혀 골랐습니다. 브랜드마다 두 장입니다. 첫 장은 원본의 배치 구조와 볼 점, 둘째 장은 같은 논리를 다른 제품에 옮긴 예시 시안 4개와 업종에서의 장점입니다.</p>
+  <div class="key" aria-label="원리 번호">
+    <span>①위계</span><span>②덩어리</span><span>③여백</span><span>④시선 흐름</span><span>⑤겹침</span><span>⑥무게 균형</span><span>⑦반복과 변화</span><span>⑧가장자리</span>
+  </div>
+</header>
+
+<main id="list" style="display:grid;gap:56px"></main>
+
+<footer>
+  원본 이미지는 저작권 때문에 이 페이지에 싣지 않았습니다. 첫 장의 그림은 배치만 다시 그린 구조 도식이고, 실제 소재는 출처 링크에서 확인하세요. 둘째 장의 시안은 모두 가상의 브랜드·제품으로 만든 연습용 예시입니다.
+</footer>
+</div>
+
+<script>
+const W=400,H=500;
+const svg=(bg,inner,label)=>`<svg class="art" viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}"><rect width="${W}" height="${H}" fill="${bg}"/>${inner}</svg>`;
+const T=(x,y,s,txt,o={})=>`<text x="${x}" y="${y}" font-size="${s}" fill="${o.fill||'#111'}" font-weight="${o.w||700}" font-family="${o.f||'IBM Plex Sans KR, sans-serif'}" text-anchor="${o.a||'start'}" letter-spacing="${o.ls||0}">${txt}</text>`;
+
+/* ---------- 1. Think Small: 작은 대상 + 넓은 여백 + 아래 텍스트 블록 ---------- */
+const copyCols=(y,ink='#888')=>{let s='';for(let c=0;c<3;c++){for(let r=0;r<6;r++){const w=r===5?60:96;s+=`<rect x="${40+c*112}" y="${y+r*10}" width="${w}" height="4" fill="${ink}"/>`}}return s};
+function smallAd(obj,head,label){
+  return svg('#f3f2ed',`${obj}${T(40,398,30,head,{f:'Nanum Myeongjo, serif',w:800})}${copyCols(420)}<rect x="330" y="482" width="30" height="8" fill="#111"/>`,label);
+}
+const beetle=`<g transform="translate(118 150)"><path d="M0 34 q6 -34 40 -34 q34 0 42 34 z" fill="#111"/><rect x="-4" y="30" width="90" height="10" rx="5" fill="#111"/><circle cx="18" cy="42" r="8" fill="#111"/><circle cx="64" cy="42" r="8" fill="#111"/><path d="M18 10 q12 -8 22 -8 v20 h-26 z" fill="#f3f2ed"/></g>`;
+const bike=`<g transform="translate(120 150)" stroke="#111" stroke-width="3.5" fill="none"><circle cx="12" cy="30" r="13"/><circle cx="64" cy="30" r="13"/><path d="M12 30 L32 8 L56 8 L64 30 M32 8 L40 30 L56 8 M52 2 h10"/><rect x="34" y="12" width="14" height="6" fill="#111"/></g>`;
+const washer=`<g transform="translate(130 136)"><rect width="48" height="56" rx="4" fill="#111"/><circle cx="24" cy="32" r="14" fill="#f3f2ed"/><circle cx="24" cy="32" r="9" fill="#111"/><rect x="6" y="6" width="14" height="4" fill="#f3f2ed"/></g>`;
+const buds=`<g transform="translate(128 150)"><rect width="40" height="30" rx="14" fill="#111"/><rect x="0" y="12" width="40" height="2" fill="#f3f2ed"/></g>`;
+const bento=`<g transform="translate(120 146)"><rect width="62" height="40" rx="6" fill="#111"/><rect x="5" y="5" width="24" height="30" rx="3" fill="#f3f2ed"/><rect x="33" y="5" width="24" height="13" rx="3" fill="#f3f2ed"/><rect x="33" y="22" width="24" height="13" rx="3" fill="#f3f2ed"/></g>`;
+
+/* ---------- 2. Absolut: 고정된 실루엣 + 매번 다른 재료 ---------- */
+let uid=0;
+function bottleAd(bg,fillMarkup,line,ink,label,extra=''){
+  const id='c'+(++uid);
+  return svg(bg,`<defs><clipPath id="${id}"><use href="#bottle"/></clipPath></defs>${extra}<g clip-path="url(#${id})">${fillMarkup}</g>${T(200,452,20,line,{a:'middle',fill:ink,ls:3})}`,label);
+}
+const glass=`<rect x="130" y="110" width="140" height="300" fill="#dfe6ea"/><rect x="146" y="110" width="16" height="300" fill="#ffffff" opacity=".8"/><rect x="150" y="250" width="100" height="40" fill="#9aa8b0"/>`;
+const halo=`<ellipse cx="200" cy="88" rx="38" ry="9" fill="none" stroke="#f2d36b" stroke-width="5"/><ellipse cx="200" cy="300" rx="150" ry="230" fill="#ffffff" opacity=".06"/>`;
+function dots(fn){let s='';for(let y=110;y<410;y+=10)for(let x=130;x<272;x+=10)s+=fn(x,y);return s}
+const cityLights=dots((x,y)=>((x*7+y*3)%11<4)?`<rect x="${x}" y="${y}" width="6" height="3" fill="#ffc83d"/>`:((x+y)%30===0?`<rect x="${x}" y="${y}" width="6" height="3" fill="#ff5a3c"/>`:'')) ;
+const rice=dots((x,y)=>`<ellipse cx="${x+(y%20?2:6)}" cy="${y+3}" rx="4" ry="2.4" fill="#f7f1df" transform="rotate(${(x*13+y)%60-30} ${x} ${y})"/>`);
+function snowField(){let s='',n=0;for(let y=20;y<420;y+=14)for(let x=10;x<400;x+=14){n++;const r=1.5+(n*7%5)*.5;s+=`<circle cx="${x+(y%28?7:0)}" cy="${y}" r="${r}" fill="#ffffff"/>`}return s}
+
+/* ---------- 3. iPod 실루엣: 단색 배경 · 검은 인물 · 제품만 흰색 ---------- */
+function figure(p,col='#000'){
+  const L=(pts,w=26)=>`<polyline points="${pts.map(a=>a.join(',')).join(' ')}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  return `<circle cx="${p.head[0]}" cy="${p.head[1]}" r="23" fill="${col}"/>${L(p.torso,44)}${p.limbs.map(l=>L(l)).join('')}`;
+}
+function silhouetteAd(bg,p,product,label){
+  return svg(bg,`${figure(p)}${product}<rect x="344" y="462" width="28" height="8" fill="#000" opacity=".85"/>`,label);
+}
+const dancer={head:[196,96],torso:[[198,140],[214,240]],limbs:[[[200,152],[140,104],[118,50]],[[206,156],[262,196],[292,168]],[[212,248],[156,322],[124,416]],[[218,248],[270,316],[318,392]]]};
+const cord=(a,b,c)=>`<path d="M${a} Q${b} ${c}" fill="none" stroke="#fff" stroke-width="3"/>`;
+const ipodOrig=`${cord('204 98','250 140','288 160')}<rect x="280" y="146" width="22" height="34" rx="4" fill="#fff" transform="rotate(-20 291 163)"/>`;
+const runner={head:[230,92],torso:[[222,134],[196,236]],limbs:[[[220,150],[270,186],[300,150]],[[214,152],[160,170],[126,138]],[[196,244],[256,300],[232,388]],[[192,244],[136,300],[78,296]]]};
+const earbuds=`<circle cx="228" cy="96" r="7" fill="#fff"/><rect x="226" y="98" width="4" height="12" rx="2" fill="#fff"/>`;
+const watch=`<rect x="292" y="146" width="16" height="22" rx="4" fill="#fff" transform="rotate(30 300 157)"/>`;
+const jumper={head:[200,90],torso:[[200,134],[200,226]],limbs:[[[198,148],[136,120],[96,78]],[[202,148],[264,120],[304,78]],[[196,234],[150,276],[160,336]],[[204,234],[250,276],[240,336]]]};
+const shoes=`<rect x="140" y="334" width="40" height="16" rx="8" fill="#fff" transform="rotate(-12 160 342)"/><rect x="222" y="334" width="40" height="16" rx="8" fill="#fff" transform="rotate(12 242 342)"/>`;
+const hiker={head:[176,104],torso:[[180,148],[196,256]],limbs:[[[182,160],[138,214],[160,262]],[[188,160],[246,190],[288,170]],[[194,262],[164,340],[176,428]],[[200,262],[262,320],[296,406]]]};
+const tumbler=`<rect x="282" y="120" width="26" height="62" rx="6" fill="#fff" transform="rotate(10 295 151)"/>`;
+
+/* ---------- 4. 감자튀김 방향 표지: 길쭉한 형태의 축으로 시선을 화면 밖으로 ---------- */
+function bentArrow({bg,col,w,n,gap,dir,container,label,note}){
+  let s='';const baseX=200-(n-1)*gap/2, yb0=150;
+  for(let i=0;i<n;i++){
+    const x=baseX+i*gap;
+    if(dir==='right'){const yb=yb0+i*gap;s+=`<polyline points="${x},330 ${x},${yb} 318,${yb}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linejoin="round"/>`}
+    else if(dir==='left'){const yb=yb0+(n-1-i)*gap;s+=`<polyline points="${x},330 ${x},${yb} 82,${yb}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linejoin="round"/>`}
+    else if(dir==='up'){s+=`<line x1="${x}" y1="330" x2="${x}" y2="120" stroke="${col}" stroke-width="${w}"/>`}
+  }
+  const ah={right:`<polyline points="318,${yb0-30} 362,${yb0+(n-1)*gap/2} 318,${yb0+(n-1)*gap+30}"`,
+            left:`<polyline points="82,${yb0-30} 38,${yb0+(n-1)*gap/2} 82,${yb0+(n-1)*gap+30}"`,
+            up:`<polyline points="${baseX-34},130 200,72 ${baseX+(n-1)*gap+34},130"`}[dir];
+  s+= ah?`${ah} fill="none" stroke="${col}" stroke-width="${w}" stroke-linejoin="round"/>`:'';
+  return svg(bg,`${s}${container}${note?T(200,470,13,note,{a:'middle',w:500,fill:'#1b1b19'}):''}`,label);
+}
+const friesBox=`<path d="M150 322 h100 l-12 120 h-76 z" fill="#d6261c"/><path d="M170 360 q30 26 60 0" fill="none" stroke="#ffc72c" stroke-width="7"/>`;
+const cup=`<path d="M156 322 h88 l-10 120 h-68 z" fill="#2f6d5b"/><rect x="150" y="314" width="100" height="12" rx="4" fill="#244f43"/>`;
+const tteokCup=`<path d="M150 322 h100 l-14 110 h-72 z" fill="#ffffff"/><rect x="150" y="322" width="100" height="14" fill="#c52a1a"/>`;
+const bowl=`<path d="M120 330 h160 a80 80 0 0 1 -160 0 z" fill="#1f1f1f"/><rect x="170" y="406" width="60" height="10" rx="4" fill="#1f1f1f"/>`;
+const churroBag=`<path d="M164 322 h72 l-6 124 h-60 z" fill="#7b3f1d"/><path d="M164 360 h72" stroke="#f3d9b1" stroke-width="5"/>`;
+
+/* ---------- 5. The Economist: 단색 면 + 흰 글자 덩어리 ---------- */
+function typeAd(bg,lines,sub,logo,label){
+  let s='',y=118;
+  lines.forEach(([t,sz])=>{s+=T(40,y,sz,t,{fill:'#fff',f:'Nanum Myeongjo, serif',w:800});y+=sz*1.22});
+  s+=T(40,y+18,14,sub,{fill:'#fff',w:400});
+  s+=`<rect x="300" y="440" width="70" height="30" fill="#fff"/>${T(335,460,12,logo,{a:'middle',fill:bg})}`;
+  return svg(bg,s,label);
+}
+
+const brands=[
+{no:'01',name:'VOLKSWAGEN — Think Small',meta:'1959 · DDB · 아트디렉터 Helmut Krone, 카피 Julian Koenig · 타이포 있음',industry:'자동차',
+ orig:smallAd(beetle,'Think small.','Think Small 구조 도식'),
+ origCap:'구조 도식: 흑백 지면, 위쪽 넓은 여백 안에 작은 비틀 한 대, 아래에 헤드라인과 3단 본문.',
+ look:[['①③','차를 크게 키우는 대신 지면 대부분을 비웠어. 여백이 넓을수록 작은 차가 오히려 먼저 보여. 여백이 주제부를 강조하는 장치로 쓰인 거야.'],
+       ['⑥','위쪽은 작지만 진한 검은 덩어리 하나, 아래쪽은 회색 글자 덩어리. 무게가 위아래로 나뉘어 균형이 잡혀.'],
+       ['③','여백이 사방에 고르게 남지 않아. 차 위쪽과 옆은 넓게, 헤드라인과 본문 사이는 촘촘하게 잡아서 숨 쉬는 곳과 조이는 곳이 함께 있어.']],
+ src:[['Ad Age·광고사 정리 (manypixels)','https://www.manypixels.co/blog/post/brilliantly-clever-print-ads'],['Swipe File: 원본 지면','https://swipefile.com/ddbs-volkswagens-think-small-print-ad']],
+ ex:[[smallAd(bike,'작게 달린다.','전기자전거 시안'),'전기자전거','접이식 소형 모델. 크기가 약점이 아니라 콘셉트.'],
+     [smallAd(washer,'작아서, 들어갑니다.','미니 세탁기 시안'),'원룸 미니 세탁기','욕실 구석에 들어간다는 장점을 여백으로 보여줌.'],
+     [smallAd(buds,'작다고 덜 들리진 않아요.','이어폰 시안'),'무선 이어폰','케이스 하나만 두고 성능은 본문에서 설명.'],
+     [smallAd(bento,'딱 한 끼만큼.','도시락 구독 시안'),'1인 도시락 구독','1인 가구의 적은 양을 화면의 비움으로 표현.']],
+ why:['자동차·가전처럼 비싸고 비교를 많이 하는 업종은 소비자가 광고를 의심하면서 봐. 과장 대신 여백과 담담한 카피를 쓰면 정직하고 자신 있는 브랜드로 보여.',
+      '크기·가격처럼 약점으로 보이는 속성을 화면 구성으로 장점처럼 보이게 바꿀 수 있어. Think Small은 작은 차라는 약점을 콘셉트로 만들었어.',
+      '시선이 제품에서 헤드라인, 본문 순서로 내려가니까 긴 설명도 끝까지 읽혀. 메타 피드에서는 화려한 소재들 사이에서 빈 화면이 오히려 눈에 띄어 스크롤을 멈추게 해.']},
+
+{no:'02',name:'ABSOLUT — Absolut Perfection',meta:'1980년 첫 집행(1981년으로 쓴 자료도 있음) · TBWA · 아트디렉터 Geoff Hayes · 타이포 있음',industry:'주류',
+ orig:bottleAd('#0d0d10',glass,'ABSOLUT PERFECTION.','#ffffff','Absolut Perfection 구조 도식',halo),
+ origCap:'구조 도식: 어두운 바탕, 무대 조명을 받은 병이 중앙에 있고 머리 위에 후광, 아래에 두 단어 카피.',
+ look:[['⑦','이 캠페인의 핵심은 시리즈 전체에 있어. 병 실루엣은 수십 년 동안 그대로 두고, 그 실루엣을 채우는 재료와 장면만 바꿨어. 노란 택시 34대로 병 모양을 만든 컷이 대표적이야.'],
+       ['①','요소는 병, 후광, 카피 세 가지뿐이야. 병은 중앙에 크게 놓고, 후광은 작은 포인트로, 카피는 아래로 떨어뜨려 위계가 분명해.'],
+       ['②③','병 주변을 어둡게 비워서 화면 전체가 병 하나의 큰 덩어리로 읽혀.']],
+ src:[['shots: Absolut 지면 광고 정리','https://shots.net/news/view/93609-the-shots-guide-to-absolut-s-print-ads-part-1'],['VinePair: Absolut Perfection','https://vinepair.com/articles/absolut-vodka-absolut-perfection-advertisements']],
+ ex:[[bottleAd('#0d0d10',glass,'ONDO 완벽.','#fff','증류주 시안 1',halo),'① 기준 컷','가상 증류주 ONDO. 후광과 병으로 시리즈의 기준을 잡아.'],
+     [bottleAd('#141a2e',cityLights,'ONDO 서울.','#ffc83d','증류주 시안 2'),'② 도시','같은 실루엣을 야경의 창문 불빛으로 채웠어.'],
+     [bottleAd('#8a6a3c',rice,'ONDO 햅쌀.','#f7f1df','증류주 시안 3'),'③ 원료','쌀알로 채워서 원료 이야기를 해.'],
+     [svg('#2a5d9c',`<defs><mask id="mk"><rect width="400" height="500" fill="#fff"/><use href="#bottle" fill="#000"/></mask></defs><g mask="url(#mk)">${snowField()}</g>${T(200,452,20,'ONDO 겨울.',{a:'middle',fill:'#fff',ls:3})}`,'증류주 시안 4'),'④ 계절 · 음각','눈송이 사이에 병 모양만 비워서 여백이 곧 제품이 돼.']],
+ why:['주류는 맛을 보여줄 수 없고 광고 표현 규제도 많아. 그래서 병 실루엣처럼 한눈에 알아보는 형태를 브랜드 자산으로 키우는 전략이 잘 맞아.',
+      '기준 형태 하나를 고정해 두면 지역, 시즌, 콜라보로 소재를 계속 바꿔도 같은 브랜드로 읽혀. 메타에서 소재 피로도가 쌓일 때 새 컷을 빨리 만들 수 있어.',
+      '컷이 쌓일수록 실루엣 기억도 쌓여. 로고 없이 병 모양만 봐도 브랜드가 떠오르게 돼.']},
+
+{no:'03',name:'APPLE — iPod Silhouettes',meta:'2003~ · TBWA\\Chiat\\Day · 타이포 거의 없음 (작은 로고·제품명)',industry:'전자기기',
+ orig:silhouetteAd('#b6e000',dancer,ipodOrig,'iPod Silhouettes 구조 도식'),
+ origCap:'구조 도식: 형광색 단색 바탕, 검은 실루엣 인물, 흰 iPod과 흰 이어폰 줄.',
+ look:[['①','화면에 쓰인 색은 단색 배경, 검정, 흰색 세 가지뿐이야. 흰색은 제품과 이어폰 줄에만 썼기 때문에 제품이 작아도 가장 먼저 보여.'],
+       ['④','팔다리가 모두 대각선이라 화면에 움직임이 생겨. 흰 줄이 귀에서 손의 제품까지 이어져서 시선이 그 선을 따라가.'],
+       ['②⑧','인물 하나가 큰 덩어리로 화면을 채우고, 팔다리 끝은 가장자리에서 충분히 떨어져 있어.']],
+ src:[['Wikipedia: iPod advertising','https://en.wikipedia.org/wiki/IPod_advertising'],['Macworld: 2003 캠페인 기사','https://www.macworld.com/article/168313/ipodads.html']],
+ ex:[[silhouetteAd('#1e7be0',runner,earbuds,'이어폰 시안'),'무선 이어폰','귀에 있는 흰 점 두 개가 주제부. 달리는 대각선 자세.'],
+     [silhouetteAd('#ff8a1e',dancer,watch,'스마트워치 시안'),'스마트워치','뻗은 손목 끝에만 흰색을 둬.'],
+     [silhouetteAd('#ff4fa3',jumper,shoes,'운동화 시안'),'운동화','좌우 대칭으로 점프하는 자세. 흰 신발 두 짝이 아래쪽 무게를 잡아.'],
+     [silhouetteAd('#2bb673',hiker,tumbler,'텀블러 시안'),'텀블러','걷는 대각선이 오른손의 흰 병으로 이어져.']],
+ why:['전자기기는 스펙만으로 차별화하기 어려워. 인물 실루엣으로 제품을 쓰는 경험과 기분을 보여주면 얼굴이 없어서 보는 사람이 자기 모습을 대입하기 쉬워.',
+      '배경색과 자세만 바꾸면 같은 틀로 수십 개의 변형을 만들 수 있어. 메타 소재 A/B 테스트나 다이내믹 소재에 잘 맞아.',
+      '흰색은 제품 색상으로만 쓴다는 규칙을 지키면 작은 썸네일에서도 제품이 보여. 모바일 피드에서 유리해.']},
+
+{no:'04',name:'McDONALD’S France — Directional Fries',meta:'2019 · TBWA\\Paris · 타이포 거의 없음',industry:'외식 (QSR)',
+ orig:bentArrow({bg:'#f1ece1',col:'#f0b400',w:10,n:6,gap:12,dir:'right',container:friesBox,label:'Directional Fries 구조 도식'}),
+ origCap:'구조 도식: 단색 바탕, 감자튀김 상자에서 솟은 튀김이 꺾여 화살표가 됨. 도로변 옥외 광고에서 근처 매장 방향을 가리켜. (실제 시안은 방향과 색이 컷마다 달라.)',
+ look:[['④','길쭉한 감자튀김의 축 자체가 화살표 역할을 해. 이 소재는 시선을 일부러 화면 밖 실제 매장 쪽으로 보내. 방향을 하나로 통일해서 산만하지 않아.'],
+       ['⑦','같은 감자튀김이 평행하게 반복되는데, 꺾이는 높이가 조금씩 달라 리듬이 생겨.'],
+       ['②③','상자, 튀김 다발, 화살촉 세 덩어리만 있고 나머지는 단색으로 비웠어. 운전 중에 1~2초만 봐도 읽혀.']],
+ src:[['Ads of the World: Directional Campaign','https://adsoftheworld.com/campaigns/directional-campaign-french-fries'],['Creative Review 기사','https://www.creativereview.co.uk/french-fries-show-the-way-in-new-mcdonalds-ads/']],
+ ex:[[bentArrow({bg:'#dcefe6',col:'#f2f2ee',w:9,n:3,gap:14,dir:'right',container:cup,label:'카페 시안',note:'120m 앞 오른쪽'}),'카페','빨대를 꺾어 화살표로. 문구는 거리 정보만.'],
+     [bentArrow({bg:'#ffb347',col:'#ffffff',w:14,n:4,gap:18,dir:'left',container:tteokCup,label:'떡볶이 시안',note:'다음 골목 왼쪽'}),'분식','굵은 떡을 반복해서 왼쪽으로 꺾어.'],
+     [bentArrow({bg:'#efe4d0',col:'#e8c76a',w:4,n:9,gap:7,dir:'up',container:bowl,label:'라멘 시안',note:'직진 50m'}),'라멘','가는 면발 여러 가닥으로 직진 화살표를 만들어.'],
+     [bentArrow({bg:'#2f2a6b',col:'#e0a458',w:12,n:3,gap:16,dir:'right',container:churroBag,label:'츄러스 시안',note:'3층 푸드코트'}),'츄러스 (쇼핑몰)','어두운 바탕에 따뜻한 색 제품만 띄워.']],
+ why:['외식업은 가까운 매장으로 바로 오게 만드는 게 매출로 이어져. 방향을 보여주는 소재는 메타의 지역 반경 타겟팅이나 매장 방문 목표와 직접 연결돼.',
+      '로고를 크게 쓰지 않아도 제품 형태만으로 브랜드를 알아봐. 대표 메뉴 모양이 확실한 브랜드일수록 효과가 커.',
+      '매장마다 방향과 거리 문구만 바꾸면 돼서 지점이 많은 프랜차이즈가 지점별 소재를 싸게 만들 수 있어.']},
+
+{no:'05',name:'THE ECONOMIST — 레드 타이포 포스터',meta:'1988~ · Abbott Mead Vickers BBDO (David Abbott) · 타이포만 있음',industry:'미디어 · 구독',
+ orig:typeAd('#e3120b',[['“I never read',38],['The Economist.”',38]],'Management trainee. Aged 42.','Economist','The Economist 구조 도식'),
+ origCap:'구조 도식: 빨간 단색 면에 흰 글자 덩어리, 아래 작은 서명 문구, 오른쪽 아래 로고. 카피는 실제 캠페인의 대표 문안.',
+ look:[['②','이미지 없이 글자 덩어리 하나가 조형 요소 역할을 해. 줄바꿈 위치로 덩어리의 모양을 조절해.'],
+       ['①','큰 인용문, 작은 서명, 더 작은 로고. 세 단계로 크기가 확실히 달라서 읽는 순서가 정해져 있어.'],
+       ['③⑥','글자를 왼쪽 위에 몰고 오른쪽 아래를 비웠어. 그 빈 곳 끝에 작은 흰 로고를 둬서 대각선으로 무게를 맞췄어.']],
+ src:[['Campaign: 1988년 포스터와 David Abbott','https://www.campaignlive.co.uk/article/best-ads-50-years-economist-poster-defined-brand-agency/1519024'],['The Economist in five posters','https://www.postkiwi.com/2008/the-economist-in-five-posters/']],
+ ex:[[typeAd('#e3120b',[['“뉴스는',40],['안 봐요.”',40]],'신입 기획자, 43세.','경제레터','경제 뉴스레터 시안'),'경제 뉴스레터','원본과 같은 자기 고백형. 읽지 않으면 뒤처진다는 메시지를 비틀어 전해.'],
+     [typeAd('#1d3fbf',[['ROAS 300%.',40],['그런데',40],['적자.',40]],'숫자를 읽는 법부터.','마케팅랩','마케팅 강의 시안'),'마케팅 강의','세 줄을 짧게 끊어 마지막 단어에 무게를 실어.'],
+     [typeAd('#0f6b4f',[['엑셀 탭이',36],['47개인 회사.',36]],'정산은 이제 한 화면에서.','정산툴','회계 SaaS 시안'),'회계 SaaS','구체적인 숫자 하나로 공감을 끌어내.'],
+     [typeAd('#5b2a86',[['“Me too.”',44]],'영어회화 3년 차의 대답.','토크랩','영어 학원 시안'),'영어 학원','한 줄짜리 덩어리라 여백이 더 커지고 긴장감이 생겨.']],
+ why:['구독, 교육, SaaS 같은 지식 상품은 보여줄 실물이 없어. 카피와 레이아웃 자체가 제품이 되니까 촬영 비용 없이도 브랜드 톤을 만들 수 있어.',
+      '브랜드 색 하나와 흰 글자라는 규칙을 고정하면 문구만 바꿔 계속 집행해도 바로 같은 브랜드로 알아봐.',
+      '타겟을 똑똑한 사람으로 대하는 위트 있는 문장은 B2B나 전문직 타겟의 저장, 공유를 끌어내. 메타에서 텍스트 위주 소재 테스트를 할 때 기준안으로 쓰기 좋아.']}
+];
+
+document.getElementById('list').innerHTML=brands.map(b=>`
+<section class="brand" id="b${b.no}">
+  <div class="brand-head"><span class="no">${b.no}</span><h2>${b.name}</h2><span class="meta">${b.meta}</span></div>
+  <div class="spread">
+    <article class="page">
+      <div class="page-label"><span>1장 · 원본 구조</span><span>${b.industry}</span></div>
+      <div class="orig">
+        <figure>${b.orig}<figcaption>${b.origCap}</figcaption></figure>
+        <div style="display:grid;gap:14px;min-width:0">
+          <div class="look"><h3>볼 점</h3><ul>${b.look.map(([k,t])=>`<li><b>${k}</b>${t}</li>`).join('')}</ul></div>
+          <div class="src"><h3>원본 보기</h3><ul>${b.src.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="page">
+      <div class="page-label"><span>2장 · 같은 논리의 예시 시안</span><span>가상 브랜드</span></div>
+      <div class="grid4">${b.ex.map(([s,t,n])=>`<figure class="ex">${s}<figcaption><b>${t}</b>${n}</figcaption></figure>`).join('')}</div>
+      <div class="why">
+        <div class="ind"><span class="tag">업종</span><strong>${b.industry}</strong><span style="color:var(--muted);font-size:13px">이 업종에서 이 논리가 좋은 이유</span></div>
+        <ul>${b.why.map(w=>`<li>${w}</li>`).join('')}</ul>
+      </div>
+    </article>
+  </div>
+</section>`).join('');
+</script>
