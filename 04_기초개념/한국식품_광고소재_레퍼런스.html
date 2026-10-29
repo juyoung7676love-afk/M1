@@ -1,0 +1,96 @@
+<title>한국 식품 브랜드 소재 5선</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 브랜드별 한 블록 — 실제 소재 이미지 줄 + 짧은 볼 점. PDF 전 1차 수집용 */
+:root{
+  --bg:#ecebe6; --paper:#f8f7f3; --ink:#1b1b19; --muted:#6a6862; --line:#d3d1c8; --accent:#c4361c; --chip:#e2e0d8;
+  --display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161614;--paper:#201f1c;--ink:#ecebe5;--muted:#a3a097;--line:#3a3933;--accent:#ec6a4c;--chip:#2c2b27;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161614;--paper:#201f1c;--ink:#ecebe5;--muted:#a3a097;--line:#3a3933;--accent:#ec6a4c;--chip:#2c2b27;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+h1{font-family:var(--display);font-size:clamp(28px,4.4vw,44px);line-height:1.2;margin:0 0 10px;text-wrap:balance}
+header p{margin:0;max-width:64ch;color:var(--muted)}
+.key{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.key span{font-family:var(--mono);font-size:12px;background:var(--chip);padding:3px 8px;border-radius:3px}
+section{display:grid;gap:14px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;border-top:2px solid var(--ink);padding-top:12px}
+.head .no{font-family:var(--mono);color:var(--accent);font-size:14px}
+.head h2{font-family:var(--display);font-size:clamp(22px,3vw,30px);margin:0;line-height:1.25}
+.head .meta{color:var(--muted);font-size:13px}
+.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
+.shots figure{margin:0;flex:0 0 auto;scroll-snap-align:start}
+.shots img{height:min(360px,62vw);width:auto;max-width:none;display:block;border:1px solid var(--line);background:#fff}
+.shots figcaption{font-size:12px;color:var(--muted);margin-top:4px;max-width:36ch}
+.body{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;background:var(--paper);border:1px solid var(--line);padding:18px}
+@media (max-width:760px){.body{grid-template-columns:1fr}}
+.body h3{font-size:13px;margin:0 0 6px;letter-spacing:.04em}
+.body ul{margin:0;padding-left:18px;display:grid;gap:5px}
+.body b{font-family:var(--mono);font-weight:500;color:var(--accent);font-size:12px;margin-right:4px}
+.body a{color:var(--ink);text-underline-offset:3px}
+.side{display:grid;gap:12px;align-content:start;font-size:13px}
+.ind{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:3px;margin-right:6px}
+footer{color:var(--muted);font-size:13px;max-width:70ch}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>한국 식품 브랜드 · 세련된 소재 5선</h1>
+  <p>디저트, 전통주, 차, 양갱, 소주까지 국내 식품·음료 브랜드 중에서 조형적으로 볼 만한 비주얼을 모았습니다. 대부분 2024~2025년 작업입니다. 이미지는 옆으로 넘겨 보세요.</p>
+  <div class="key"><span>①위계</span><span>②덩어리</span><span>③여백</span><span>④시선 흐름</span><span>⑤겹침</span><span>⑥무게 균형</span><span>⑦반복과 변화</span><span>⑧가장자리</span></div>
+</header>
+<main id="list" style="display:grid;gap:48px"></main>
+<footer>이미지는 공부용으로 출처 페이지(매거진·어워드 아카이브·기사)에서 가져왔습니다. 고르고 나면 2장 구성 PDF로 만들 수 있어요.</footer>
+</div>
+
+<script>
+const items=[
+{no:'01',name:'NUDAKE 누데이크',meta:'젠틀몬스터의 디저트 브랜드 · 성수 플래그십·“벌스(Birth)” 케이크 · 2021~',ind:'디저트·베이커리',
+ shots:[['nudake_1','대형 알 오브제 “MAKE NEW FANTASY DESSERT OF YOUR DREAMS”'],['nudake_2','검은 구 위의 작은 구, 받침은 말차색 큐브'],['nudake_3','조명 아래 검은 조형 디저트'],['nudake_4','알 케이크와 푸른 구 정물']],
+ look:[['②⑥','검은 구 위에 작은 흰 구, 아래에 점박이 큐브를 쌓은 컷은 구·구·사각형 세 덩어리로 이뤄져 있어. 가장 크고 어두운 덩어리를 가운데 두고 위아래를 가볍게 해서 무게가 가운데 모여.'],
+       ['①③','대형 알 컷은 매끈한 흰 타원 하나가 화면을 차지하고, 아래 받침만 복잡해. 단순한 큰 면과 복잡한 받침이 대비돼서 알이 바로 주제부로 읽혀.'],
+       ['⑤','디저트를 음식이 아니라 오브제처럼 찍어. 배경을 비우거나 어둡게 눌러서 형태 자체가 보이게 해.']],
+ src:[['헤이팝: 곳곳에 알 품은 누데이크 성수','https://heypop.kr/n/53156/'],['디자인플러스: 누데이크 하예진','https://design.co.kr/article/19281/']]},
+{no:'02',name:'백제 소주 Baekje Soju',meta:'브랜딩 Ockhams Branding · Asia Design Prize 2025 수상 · 클라이언트 내변산',ind:'전통주',
+ shots:[['baekje_1','주황 상자와 병, 뒤에 붉은 꽃'],['baekje_2','병 두 개와 선물 상자, 잔과 떡'],['baekje_3','분홍 상자 두 개를 대각선으로 놓은 탑뷰']],
+ look:[['②⑥','상자(큰 사각형)와 병(가는 세로)을 나란히 세워 큰 덩어리와 작은 덩어리를 대비시켰어. 병이 상자보다 약간 높아서 위쪽 선이 단조롭지 않아.'],
+       ['③','첫 컷은 꽃을 화면 양옆 가장자리 쪽에 흐릿하게 두고 가운데를 비워서 제품이 숨 쉴 공간을 만들었어.'],
+       ['④','탑뷰 컷은 상자 두 개를 비스듬히 엇갈려 놓아서 대각선 흐름이 생겨. 병과 잔이 그 흐름을 이어줘.']],
+ src:[['Asia Design Prize: Baekje Soju Branding','https://asiadesignprize.com/251269'],['Ockhams Branding','https://www.ockhams.kr']]},
+{no:'03',name:'힘티 HIM TEA',meta:'브랜딩 deblur · Asia Design Prize 2025 수상 · 한글 타이포 중심',ind:'음료(차)',
+ shots:[['him_1','형광 분홍 바탕 위 병들을 사선으로 배치'],['him_2','분홍 단색 위 쇼핑백 하나를 든 손'],['him_3','한글 로고 카드가 겹겹이 쌓인 패턴']],
+ look:[['④⑦','같은 병을 모두 같은 사선 방향으로 반복하고 라벨 색만 빨강·노랑·파랑으로 바꿨어. 방향은 통일하고 색으로 변화를 줘.'],
+       ['①③','쇼핑백 컷은 분홍 단색 면에 손과 가방만 남겨서 주제부가 단번에 보여. 가방 색이 배경과 같은 계열이라 로고 원형이 강조돼.'],
+       ['②','“힘티!” 한글 로고를 굵은 덩어리로 써서 글자 자체가 조형 요소가 돼. 한글 타이포를 세련되게 쓴 예시야.']],
+ src:[['Asia Design Prize: HIM TEA Branding','https://asiadesignprize.com/251093']]},
+{no:'04',name:'흑유재 Heukyujae',meta:'수제 양갱 · 2025 서울디자인페스티벌 헤이팝 협업',ind:'디저트(전통 과자)',
+ shots:[['heuk_1','작은 양갱 한 줄 + 흰 접시 격자'],['heuk_2','검정 바탕 사진과 짧은 설명 블록'],['heuk_3','행사 현장 다과']],
+ look:[['⑦','같은 크기 흰 접시를 격자로 반복하고 접시 위 양갱 색만 바꿨어. 반복의 기준은 남기고 색으로 변화를 줘.'],
+       ['③①','흰 여백을 넓게 두고 작은 양갱을 한 줄로 놓아서 정갈한 인상을 줘. 사진, 설명, 여백이 정돈된 위계로 나뉘어 있어.']],
+ src:[['헤이팝: 헤이팝×흑유재 2025 SDF','https://heypop.kr/n/131079/']],
+ note:'광고 캠페인이라기보다 브랜드 소개 지면이야. 레이아웃 참고용으로 넣었어.'},
+{no:'05',name:'새로 SAERO',meta:'롯데칠성음료 · 2022~ · 새로 살구 iF 디자인 어워드 2025 패키지 부문 본상',ind:'주류(소주)',
+ shots:[['saero_1','새로 오리지널과 과일 라인 세 병']],
+ look:[['⑦','같은 병 형태를 유지하고 색만 투명, 분홍, 연두로 바꿔 라인업을 만들었어. 반복과 변화를 패키지로 보여주는 예시야.'],
+       ['②','도자기를 떠올리게 하는 둥근 어깨선과 세로 한글 로고가 병 하나를 하나의 덩어리로 묶어줘. 구미호 캐릭터 일러스트가 작은 포인트가 돼.']],
+ src:[['헤럴드경제: 새로 7억 병 돌파','https://www.heraldk.com/article/2025101415000026519'],['비즈워치: 새로 광고 이야기','https://news.bizwatch.co.kr/article/consumer/2026/02/26/0033']],
+ note:'광고 컷이 아닌 제품 사진만 확보했어. 애니메이션 광고(새로구미뎐) 장면이 필요하면 따로 찾아볼게.'}
+];
+document.getElementById('list').innerHTML=items.map(b=>`
+<section>
+  <div class="head"><span class="no">${b.no}</span><h2>${b.name}</h2><span class="meta">${b.meta}</span></div>
+  <div class="shots">${b.shots.map(([f,c])=>`<figure><img src="img_kfood/${f}.jpg" alt="${c}"><figcaption>${c}</figcaption></figure>`).join('')}</div>
+  <div class="body">
+    <div><h3>볼 점</h3><ul>${b.look.map(([k,t])=>`<li><b>${k}</b>${t}</li>`).join('')}</ul></div>
+    <div class="side"><div><span class="ind">업종</span>${b.ind}</div>
+      <div><h3>출처</h3><ul>${b.src.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>
+      ${b.note?`<div style="color:var(--muted)">${b.note}</div>`:''}</div>
+  </div>
+</section>`).join('');
+</script>
