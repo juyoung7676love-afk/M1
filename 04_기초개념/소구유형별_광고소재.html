@@ -1,0 +1,88 @@
+<title>소구 유형별 광고 소재</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 브랜드별 한 블록 — 실제 소재 이미지 줄 + 짧은 볼 점. PDF 전 1차 수집용 */
+:root{
+  --bg:#ecebe6; --paper:#f8f7f3; --ink:#1b1b19; --muted:#6a6862; --line:#d3d1c8; --accent:#c4361c; --chip:#e2e0d8;
+  --display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161614;--paper:#201f1c;--ink:#ecebe5;--muted:#a3a097;--line:#3a3933;--accent:#ec6a4c;--chip:#2c2b27;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161614;--paper:#201f1c;--ink:#ecebe5;--muted:#a3a097;--line:#3a3933;--accent:#ec6a4c;--chip:#2c2b27;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+h1{font-family:var(--display);font-size:clamp(28px,4.4vw,44px);line-height:1.2;margin:0 0 10px;text-wrap:balance}
+header p{margin:0;max-width:64ch;color:var(--muted)}
+.key{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.key span{font-family:var(--mono);font-size:12px;background:var(--chip);padding:3px 8px;border-radius:3px}
+section{display:grid;gap:14px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;border-top:2px solid var(--ink);padding-top:12px}
+.head .no{font-family:var(--mono);color:var(--accent);font-size:14px}
+.head h2{font-family:var(--display);font-size:clamp(22px,3vw,30px);margin:0;line-height:1.25}
+.head .meta{color:var(--muted);font-size:13px}
+.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
+.shots figure{margin:0;flex:0 0 auto;scroll-snap-align:start}
+.shots img{height:min(360px,62vw);width:auto;max-width:none;display:block;border:1px solid var(--line);background:#fff}
+.shots figcaption{font-size:12px;color:var(--muted);margin-top:4px;max-width:36ch}
+.body{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;background:var(--paper);border:1px solid var(--line);padding:18px}
+@media (max-width:760px){.body{grid-template-columns:1fr}}
+.body h3{font-size:13px;margin:0 0 6px;letter-spacing:.04em}
+.body ul{margin:0;padding-left:18px;display:grid;gap:5px}
+.body b{font-family:var(--mono);font-weight:500;color:var(--accent);font-size:12px;margin-right:4px}
+.body a{color:var(--ink);text-underline-offset:3px}
+.side{display:grid;gap:12px;align-content:start;font-size:13px}
+.card{display:grid;gap:8px;min-width:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card img{width:100%;height:auto;display:block;border:1px solid var(--line);background:#fff}
+.card .brand{font-weight:700;font-size:14px}
+.card p{margin:0;font-size:13px;color:var(--muted)}
+.card .tip{color:var(--ink)}
+.card .tip b{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:500;margin-right:4px}
+.def{background:var(--paper);border:1px solid var(--line);padding:14px 16px;font-size:14px}
+.ind{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:3px;margin-right:6px}
+footer{color:var(--muted);font-size:13px;max-width:70ch}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>소구 유형별 광고 소재</h1>
+  <p>실제로 집행된 피드·SNS 광고만 모았습니다. 브랜드 이미지형, 문제제기형, 실제후기형, 제품증명형 네 가지로 나눴고, 카드마다 왜 그 유형인지와 만들 때 가져올 점을 적었습니다.</p>
+</header>
+<main id="list" style="display:grid;gap:48px"></main>
+<footer>이미지는 공부용으로 Pinterest에 수집된 실제 광고 캡처에서 가져왔습니다. 메타 광고 라이브러리는 로그인 없이는 브랜드별 검색이 안 돼서, 한 브랜드의 네 유형을 모두 모으지는 못했습니다.</footer>
+</div>
+
+<script>
+const T=[
+{no:'01',name:'브랜드 이미지형',def:'제품의 분위기·세계관을 보여줘서 “이 브랜드 갖고 싶다”를 만드는 소재. 정보는 최소, 카피는 짧게, 제품과 무드가 주인공.',
+ items:[['b_torriden','토리든 · 다이브인 포맨','물보라 속 병 하나. 브랜드 키워드인 “수분”을 물 이미지로만 전달.','병을 사선으로 크게 넣고 화면 가장자리에서 잘라 역동감을 줘. 카피는 제품명 외에 없음.'],
+        ['b_anua','아누아 · 100-Hour Dewy Glow','돌 받침 위 튜브와 크림 텍스처, 세리프 헤드라인.','상단 헤드라인, 하단 제품. 텍스처를 짜 놓아 사용감을 이미지로 보여줘.'],
+        ['b_medicube1','메디큐브 · PDRN 핑크 세럼','손을 뻗는 모델과 앞으로 튀어나온 병. 원근으로 시선 집중.','제품을 화면 앞쪽에 가장 크게, 모델은 뒤에 둬서 앞뒤 관계를 확실히.'],
+        ['b_medicube2','메디큐브 · How I Glow','모델 얼굴과 핑크 톤 하나로 통일, 손글씨 느낌 카피.','브랜드 컬러 한 가지로 배경·의상·카피를 맞춰 한눈에 브랜드가 읽혀.']]},
+{no:'02',name:'문제제기형',def:'타겟이 가진 고민을 먼저 꺼내서 “내 얘기네” 하고 멈추게 만든 뒤 제품을 해결책으로 보여주는 소재.',
+ items:[['p_create','크레아틴 스틱 브랜드 · Your problems / Our solution','왼쪽에 고민 6개(브레인 포그, 오후 피로 등), 오른쪽에 제품을 든 손.','화면을 반으로 나눠 왼쪽 문제, 오른쪽 해결. 고민은 아이콘 + 짧은 문장으로 나열.'],
+        ['p_nodor','노도르 · 입냄새','“입냄새 걱정 안해도 되니까” + 가격 혜택. 인물이 직접 말하는 구도.','고민 문장을 자막처럼 화면 하단에 크게. 상단엔 혜택(5박스 공짜)을 붙여 클릭 이유를 더해.'],
+        ['p_medicube','메디큐브 · 잡티 케어','“잡티 흔적이 반복되지 않도록” 고민을 카피로 꺼내고 제품을 위에 배치.','핑크 단색 위 제품 + 하단 고민 카피. 문제제기를 차분한 톤으로 한 예.'],
+        ['p_lo','LÒ · 99 problems, 1 solution','이모지 9개로 문제를 나열하고, 아래 손에 든 제품 하나가 해결책.','숫자 대비(99 vs 1)로 한 줄 만에 문제-해결 구조를 만들어. 텍스트 최소.']]},
+{no:'03',name:'실제후기형',def:'실제 구매자·사용자의 말을 그대로 보여줘서 신뢰를 주는 소재. 별점, 이름 일부, 말투를 살리는 게 핵심.',
+ items:[['r_purika','퓨리카 · 실제 후기 인용','★★★★★ “왜 무신을 이제야 알았을까요? 나이 40에 아기피부 소리를 듣네요”.','후기 문장을 큰따옴표로 크게 인용하고, 별점·마스킹 이름(최**님)으로 진짜 후기임을 표시.'],
+        ['r_curas','큐라에스 · 더마3 콜라겐 (메타 광고)','“피부탱탱해지니까 모공이 안보인대요” 친구에게 말하듯한 후기 톤.','인물이 제품을 들고 있고 말풍선형 카피. 본문도 “요즘 이거 챙겨 먹고 달라졌어요”로 후기 말투 유지.'],
+        ['r_loreal','로레알 프로페셔널 · Absolut Repair','실제 리뷰 카드 여러 장이 제품을 든 손 주위에 겹쳐 있어.','리뷰 캡처를 겹쳐 쌓아 “후기가 이렇게 많다”를 양으로 보여줘. 제품은 가운데.'],
+        ['r_toner','토너패드 브랜드 · 인플루언서 60인의 PICK','인플루언서 후기 말풍선을 세로로 나열.','상단에 숫자(60인)로 규모를 말하고 아래에 짧은 후기를 반복. 유튜브·인스타 출처 표기.']]},
+{no:'04',name:'제품증명형',def:'수치, 임상, 비포·애프터, 판매량처럼 객관적인 근거로 효과를 증명하는 소재.',
+ items:[['e_anua1','아누아 · 히알루론 세럼','89.7%, 37.5%, 45.1%, +30.7% 임상 수치를 카드로 나열.','수치마다 조건(히터 환경, 사용 직후)을 작게 붙여 신뢰도를 높여. 제품은 오른쪽에 크게.'],
+        ['e_anua2','아누아 · 아젤라산 10+','100% / 90% / 90% 세 줄 수치 + 제품.','큰 숫자 → 작은 설명 순서를 반복해 리듬을 만들어. 배경은 제품 색과 같은 초록.'],
+        ['e_botane','Bôtane · 비포·애프터','BEFORE/AFTER 피부 사진 + 97%, 93% 수치.','비포·애프터 사진 아래에 수치를 붙여 시각 증거와 숫자 증거를 같이 보여줘.'],
+        ['e_ordinary','디오디너리 · 90% PLUMPER','“90%”를 화면 최상단에 가장 크게. 2주 내 결과 명시.','숫자 하나를 주제부로 쓰고, 제품은 텍스처 배경 위에 작게. 숫자가 곧 헤드라인.']]]}
+];
+document.getElementById('list').innerHTML=T.map(t=>`
+<section>
+  <div class="head"><span class="no">${t.no}</span><h2>${t.name}</h2></div>
+  <div class="def">${t.def}</div>
+  <div class="cards">${t.items.map(([f,b,w,tip])=>`<figure class="card" style="margin:0"><img src="img_type/${f}.jpg" alt="${b}"><div class="brand">${b}</div><p>${w}</p><p class="tip"><b>제작</b>${tip}</p></figure>`).join('')}</div>
+</section>`).join('');
+</script>
