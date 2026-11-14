@@ -158,6 +158,8 @@ mark { background: var(--mark); color: inherit; border-radius: 2px; padding: 0 1
 .card .ops { margin-left: auto; display: flex; gap: 4px; }
 .card .ops button { all: unset; cursor: pointer; color: var(--muted); font-size: 12px; padding: 2px 6px; border-radius: 4px; }
 .card .ops button:hover { color: var(--fg); background: var(--row-hover); }
+.card .ops button.danger { color: #fff; background: #c0392b; font-weight: 600; }
+.card .ops button.danger:hover { background: #a93226; color: #fff; }
 .card textarea { width: 100%; min-height: 80px; font: inherit; font-size: 15px; line-height: 1.65; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; resize: vertical; }
 /* 에세이 탭 */
 .essay { display: grid; gap: 14px; max-width: 820px; }
@@ -474,7 +476,7 @@ let et; $("eq").addEventListener("input", ev => { clearTimeout(et); et = setTime
 renderEssays();
 
 // ── 문장 탭: 아티팩트 db의 sentences 컬렉션 ──
-const S = { db: null, items: [], canWrite: false, editing: null, q: "", tag: "" };
+const S = { db: null, items: [], canWrite: false, editing: null, confirmDel: null, q: "", tag: "" };
 const fmtDate = iso => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }); };
 function status(msg, err) { $("sStatus").textContent = msg; $("sStatus").classList.toggle("err", !!err); $("sStatus").hidden = !msg; }
 function renderSent() {
@@ -497,7 +499,9 @@ function renderSent() {
         <span class="date">${esc(fmtDate(it.createdAt))}</span>
         ${S.canWrite ? `<span class="ops">${editing
           ? `<button data-op="save">저장</button><button data-op="cancel">취소</button>`
-          : `<button data-op="edit">수정</button><button data-op="del">삭제</button>`}</span>` : ""}
+          : S.confirmDel === it.id
+            ? `<button data-op="delyes" class="danger">정말 삭제</button><button data-op="delno">취소</button>`
+            : `<button data-op="edit">수정</button><button data-op="del">삭제</button>`}</span>` : ""}
       </div></article>`;
   }).join("");
 }
@@ -541,8 +545,10 @@ $("cards").addEventListener("click", async e => {
     if (b.dataset.op === "edit") { S.editing = id; renderSent(); b.closest(".cards").querySelector(".edit-text")?.focus(); }
     else if (b.dataset.op === "cancel") { S.editing = null; renderSent(); }
     else if (b.dataset.op === "save") { const t = b.closest(".card").querySelector(".edit-text").value.trim(); if (t) await ref.update({ text: t }); S.editing = null; renderSent(); }
-    else if (b.dataset.op === "del" && confirm("이 문장을 삭제할까요?")) await ref.delete();
-  } catch { status("변경하지 못했어요. 다시 시도해 주세요.", true); }
+    else if (b.dataset.op === "del") { S.confirmDel = id; renderSent(); }
+    else if (b.dataset.op === "delno") { S.confirmDel = null; renderSent(); }
+    else if (b.dataset.op === "delyes") { S.confirmDel = null; await ref.delete(); }
+  } catch (err) { status(err?.code === "invalid_argument" ? "이 계정에는 삭제·수정 권한이 없어요." : "변경하지 못했어요. 다시 시도해 주세요.", true); renderSent(); }
 });
 initSent();
 
