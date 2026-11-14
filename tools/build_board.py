@@ -141,19 +141,39 @@ def parse(path):
     return note, rows
 
 
+ESSAY_DIR = "11_에세이"
+
+
+def parse_essay(path):
+    """에세이 탭용: 노트 전체를 한 덩어리 HTML로 (섹션 제목 포함)."""
+    note, _ = parse(path)
+    lines = path.read_text(encoding="utf-8").splitlines()
+    body = [l for l in lines if not (l.startswith("# ") or l.startswith("> 한 줄 요약:")
+            or l.startswith(("최초 작성:", "업데이트:")) or l.strip() in ("---", "<!-- 상단고정 -->"))]
+    body = [("### " + l[3:]) if l.startswith("## ") else l for l in body]
+    note.update(html=render(body, path.parent), text=plain(body))
+    for k in ("cat", "pin", "mirror"):
+        note.pop(k)
+    return note
+
+
 def main():
-    cats = [d.name.split("_", 1)[1] for d in sorted(ROOT.glob("[0-9][0-9]_*/")) if d.is_dir()]
-    notes, rows = [], []
+    cats = [d.name.split("_", 1)[1] for d in sorted(ROOT.glob("[0-9][0-9]_*/")) if d.is_dir() and d.name != ESSAY_DIR]
+    notes, rows, essays = [], [], []
     for p in sorted(ROOT.glob("[0-9][0-9]_*/*.md")):
         if p.name == "README.md":
+            continue
+        if p.parent.name == ESSAY_DIR:
+            essays.append(parse_essay(p))
             continue
         n, r = parse(p)
         notes.append(n)
         rows.extend(r)
-    data = json.dumps({"cats": cats, "notes": notes, "rows": rows}, ensure_ascii=False).replace("</", "<\\/")
+    essays.sort(key=lambda e: e["created"], reverse=True)
+    data = json.dumps({"cats": cats, "notes": notes, "rows": rows, "essays": essays}, ensure_ascii=False).replace("</", "<\\/")
     tpl = (ROOT / "tools" / "board_template.html").read_text(encoding="utf-8")
     (ROOT / "board.html").write_text(tpl.replace("/*__DATA__*/null", data), encoding="utf-8")
-    print(f"board.html: 노트 {len(notes)}개, 항목 {len(rows)}개")
+    print(f"board.html: 노트 {len(notes)}개, 항목 {len(rows)}개, 에세이 {len(essays)}개")
 
 
 if __name__ == "__main__":
