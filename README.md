@@ -2,7 +2,7 @@
 
 광고 공부 내용과 실무 경험을 카테고리별로 정리하는 저장소입니다.
 
-**한눈에 보기 (필터 보드):** https://claude.ai/artifact/PqP4XAvoLurYq1TxeBMGTf
+**한눈에 보기 (필터 보드):** https://claude.ai/artifact/PqP4XAvoLurYq1TxeBMGTf — `노트 보드` 탭(카테고리 필터·검색) / `문장` 탭(일상에서 떠오른 문장을 바로 적는 곳)
 
 | 폴더 | 내용 |
 |---|---|

@@ -128,6 +128,37 @@ a { color: var(--accent); }
 mark { background: var(--mark); color: inherit; border-radius: 2px; padding: 0 1px; }
 .search kbd { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; pointer-events: none; }
 .search input:focus + kbd, .search input:not(:placeholder-shown) + kbd { display: none; }
+/* 상단 탭: 노트 보드 / 문장 */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
+.tab { all: unset; cursor: pointer; padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; display: inline-flex; gap: 6px; align-items: center; }
+.tab:hover { color: var(--fg); }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.tab .n { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); font-weight: 400; }
+
+/* 문장 탭 */
+.sent { display: grid; gap: 14px; max-width: 760px; }
+.compose { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; gap: 8px; }
+.compose textarea { width: 100%; min-height: 92px; resize: vertical; font: inherit; font-size: 15px; line-height: 1.65; color: var(--fg); background: transparent; border: 0; padding: 4px 2px; }
+.compose textarea:focus { outline: none; }
+.compose:focus-within { border-color: var(--accent); }
+.compose-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.compose-row input { flex: 1 1 160px; min-width: 0; font: inherit; font-size: 13px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.btn.primary:disabled { opacity: .5; cursor: default; }
+.hint { color: var(--muted); font-size: 12px; }
+.sent-status { color: var(--muted); font-size: 13px; }
+.sent-status.err { color: var(--warn); }
+.cards { display: grid; gap: 10px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.card .txt { white-space: pre-wrap; font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+.card .foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; }
+.card .foot .date { font-size: 11.5px; }
+.tagchip { background: var(--accent-soft); color: var(--fg); border-radius: 999px; padding: 1px 8px; font-size: 12px; border: 0; font: inherit; font-size: 12px; cursor: pointer; }
+.card .ops { margin-left: auto; display: flex; gap: 4px; }
+.card .ops button { all: unset; cursor: pointer; color: var(--muted); font-size: 12px; padding: 2px 6px; border-radius: 4px; }
+.card .ops button:hover { color: var(--fg); background: var(--row-hover); }
+.card textarea { width: 100%; min-height: 80px; font: inherit; font-size: 15px; line-height: 1.65; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; resize: vertical; }
 .empty-state { padding: 40px 16px; text-align: center; color: var(--muted); }
 
 @media (max-width: 720px) {
@@ -147,6 +178,27 @@ mark { background: var(--mark); color: inherit; border-radius: 2px; padding: 0 1
     <span class="meta" id="meta"></span>
   </header>
 
+  <nav class="tabs" role="tablist" aria-label="보기">
+    <button class="tab" role="tab" id="tabNotes" data-view="notes" aria-selected="true">노트 보드</button>
+    <button class="tab" role="tab" id="tabSent" data-view="sent" aria-selected="false">문장 <span class="n" id="sentCount"></span></button>
+  </nav>
+
+  <section class="sent" id="viewSent" hidden>
+    <div class="compose" id="compose">
+      <label for="sText" hidden>문장</label>
+      <textarea id="sText" placeholder="일상에서 떠오른 생각·문장을 적어 두세요"></textarea>
+      <div class="compose-row">
+        <input id="sTag" placeholder="태그 (선택) — 예: 카피, 관찰, 소비심리" autocomplete="off">
+        <button class="btn primary" id="sSave" disabled>저장</button>
+      </div>
+      <span class="hint">Ctrl/⌘ + Enter로 저장</span>
+    </div>
+    <div class="search"><input id="sq" type="search" placeholder="문장 검색" autocomplete="off"></div>
+    <div class="sent-status" id="sStatus">불러오는 중…</div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <div id="viewNotes" style="display:contents">
   <div class="cats" id="cats" role="group" aria-label="카테고리 필터"></div>
 
   <div class="bar">
@@ -167,6 +219,7 @@ mark { background: var(--mark); color: inherit; border-radius: 2px; padding: 0 1
       <tbody id="body"></tbody>
     </table>
     <div class="empty-state" id="empty" hidden>조건에 맞는 항목이 없습니다. 검색어나 카테고리 필터를 바꿔 보세요.</div>
+  </div>
   </div>
 </div>
 
@@ -338,7 +391,7 @@ $("body").addEventListener("keydown", e => {
 });
 let t; $("q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value; renderCats(); renderBody(); persist(); }, 120); });
 document.addEventListener("keydown", e => {
-  if (e.key === "/" && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) { e.preventDefault(); $("q").focus(); }
+  if (e.key === "/" && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) { e.preventDefault(); ($("viewSent").hidden ? $("q") : $("sq")).focus(); }
   else if (e.key === "Escape" && document.activeElement === $("q")) { state.q = ""; $("q").value = ""; renderCats(); renderBody(); persist(); }
 });
 $("flagBtn").addEventListener("click", () => { state.flag = !state.flag; render(); });
@@ -350,6 +403,92 @@ $("expandBtn").addEventListener("click", () => {
   list.forEach(r => allOpen ? state.open.delete(r.id) : state.open.add(r.id));
   renderBody();
 });
+
+// ── 탭 ──
+function setView(v) {
+  const sent = v === "sent";
+  $("viewSent").hidden = !sent;
+  $("viewNotes").style.display = sent ? "none" : "contents";
+  $("tabNotes").setAttribute("aria-selected", !sent);
+  $("tabSent").setAttribute("aria-selected", sent);
+  try { localStorage.setItem("board-view", v); } catch {}
+}
+document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) setView(b.dataset.view); });
+let initView = "notes"; try { initView = localStorage.getItem("board-view") || "notes"; } catch {}
+setView(location.hash === "#문장" || location.hash === "#sent" ? "sent" : initView);
+
+// ── 문장 탭: 아티팩트 db의 sentences 컬렉션 ──
+const S = { db: null, items: [], canWrite: false, editing: null, q: "", tag: "" };
+const fmtDate = iso => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }); };
+function status(msg, err) { $("sStatus").textContent = msg; $("sStatus").classList.toggle("err", !!err); $("sStatus").hidden = !msg; }
+function renderSent() {
+  $("sentCount").textContent = S.items.length || "";
+  $("compose").hidden = !S.canWrite;
+  const terms = S.q.toLowerCase().split(/\s+/).filter(Boolean);
+  const list = S.items.filter(it => {
+    const hay = ((it.text || "") + " " + (it.tag || "")).toLowerCase();
+    return (!S.tag || it.tag === S.tag) && terms.every(t => hay.includes(t) || hay.replace(/\s+/g, "").includes(t));
+  });
+  const re = terms.length ? new RegExp("(" + terms.map(t => [...t].map(reEsc).join("\\s*")).join("|") + ")", "gi") : null;
+  if (S.db && !S.items.length) status(S.canWrite ? "아직 적은 문장이 없어요. 위에 첫 문장을 적어 보세요." : "아직 문장이 없어요.");
+  else if (S.db) status(S.q || S.tag ? `${list.length}개 문장${S.tag ? ` · 태그: ${S.tag} (태그를 다시 누르면 해제)` : ""}` : "");
+  $("cards").innerHTML = list.map(it => {
+    const editing = S.editing === it.id;
+    return `<article class="card" data-id="${esc(it.id)}">
+      ${editing ? `<textarea class="edit-text">${esc(it.text)}</textarea>` : `<div class="txt">${hl(it.text || "", re)}</div>`}
+      <div class="foot">
+        ${it.tag ? `<button class="tagchip" data-tag="${esc(it.tag)}">#${esc(it.tag)}</button>` : ""}
+        <span class="date">${esc(fmtDate(it.createdAt))}</span>
+        ${S.canWrite ? `<span class="ops">${editing
+          ? `<button data-op="save">저장</button><button data-op="cancel">취소</button>`
+          : `<button data-op="edit">수정</button><button data-op="del">삭제</button>`}</span>` : ""}
+      </div></article>`;
+  }).join("");
+}
+async function initSent() {
+  const timer = setTimeout(() => { if (!S.db) status("문장 저장소에 연결하지 못했어요. claude.ai에서 페이지를 열어 주세요.", true); }, 10000);
+  const db = window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
+  if (!db) { clearTimeout(timer); status("문장 탭은 claude.ai에서 열었을 때(로그인 상태) 저장·조회할 수 있어요.", true); $("compose").hidden = true; return; }
+  const user = await window.claude.use("user").catch(() => null);
+  S.canWrite = user ? (await user.canEdit().catch(() => false)) : false;
+  S.db = db;
+  db.collection("sentences").orderBy("createdAt", "desc").onSnapshot(snap => {
+    clearTimeout(timer);
+    S.items = snap.docs.filter(d => d.exists).map(d => ({ id: d.id, ...d.data() }));
+    renderSent();
+  }, e => { clearTimeout(timer); status(e.code === "revoked" ? "" : "문장을 불러오지 못했어요.", true); });
+}
+$("sText").value = (() => { try { return localStorage.getItem("sent-draft") || ""; } catch { return ""; } })();
+const syncSave = () => { $("sSave").disabled = !$("sText").value.trim(); try { localStorage.setItem("sent-draft", $("sText").value); } catch {} };
+$("sText").addEventListener("input", syncSave); syncSave();
+async function saveSentence() {
+  const text = $("sText").value.trim(); if (!text || !S.db) return;
+  $("sSave").disabled = true;
+  try {
+    await S.db.collection("sentences").add({ text, tag: $("sTag").value.trim(), createdAt: new Date().toISOString() });
+    $("sText").value = ""; syncSave(); $("sText").focus();
+  } catch (e) {
+    status(e.code === "invalid_argument" ? "이 계정에는 쓰기 권한이 없어요." : e.code === "quota_exceeded" ? "저장 공간이 가득 찼어요." : "저장하지 못했어요. 다시 시도해 주세요.", true);
+    if (e.code === "invalid_argument") { S.canWrite = false; renderSent(); }
+    syncSave();
+  }
+}
+$("sSave").addEventListener("click", saveSentence);
+$("sText").addEventListener("keydown", e => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveSentence(); } });
+let st; $("sq").addEventListener("input", e => { clearTimeout(st); st = setTimeout(() => { S.q = e.target.value; renderSent(); }, 120); });
+$("cards").addEventListener("click", async e => {
+  const tag = e.target.closest("[data-tag]");
+  if (tag) { S.tag = S.tag === tag.dataset.tag ? "" : tag.dataset.tag; renderSent(); return; }
+  const b = e.target.closest("[data-op]"); if (!b) return;
+  const id = b.closest(".card").dataset.id, ref = S.db.collection("sentences").doc(id);
+  try {
+    if (b.dataset.op === "edit") { S.editing = id; renderSent(); b.closest(".cards").querySelector(".edit-text")?.focus(); }
+    else if (b.dataset.op === "cancel") { S.editing = null; renderSent(); }
+    else if (b.dataset.op === "save") { const t = b.closest(".card").querySelector(".edit-text").value.trim(); if (t) await ref.update({ text: t }); S.editing = null; renderSent(); }
+    else if (b.dataset.op === "del" && confirm("이 문장을 삭제할까요?")) await ref.delete();
+  } catch { status("변경하지 못했어요. 다시 시도해 주세요.", true); }
+});
+initSent();
 
 const last = DATA.notes.map(n => n.updated).sort().pop() || "";
 $("meta").textContent = `노트 ${DATA.notes.length} · 항목 ${rows.length} · 최근 업데이트 ${last}`;
